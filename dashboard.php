@@ -52,7 +52,7 @@
                     $res=mysqli_query($connection,"SELECT * FROM vehicle WHERE u_id='".$_SESSION["id"]."' ORDER BY v_id DESC");
                     foreach($res as $row){
                         echo "<div class='dash-section-body-item'>";
-                        echo "<div class='item-name'>".$row["reg_num"]."</div>";
+                        echo "<div class='item-name'><a href='dashboard/vehicle.php?vid=".$row['v_id']."'>".$row["reg_num"]."</a></div>";
                         echo "<input type='button' class='item-delete' value='delete'></div>";
 
                     }
