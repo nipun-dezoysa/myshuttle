@@ -5,7 +5,6 @@ $(document).ready(function(){
         var city = $("#loc").val();
         cities.push(city);
         count++;
-        cities.push(city);
         const cityt = document.createElement("div");
         const citys = document.createTextNode(count+". "+city);
         cityt.setAttribute("class","stop");
@@ -41,25 +40,6 @@ $(document).ready(function(){
                         var res =JSON.parse(response);
                         if(res.statusCode==200){
                             r_id = res.rid;
-                            // for(var i=0;i<count;i++){
-                            //     prompt("hey");
-                            //     $.ajax({
-                            //         url:'http://localhost/myphp/myshuttle/inc/addstops.php',
-                            //         type: 'POST',
-                            //         data: {
-                            //             city: cities[i],
-                            //             rid: r_id			
-                            //         },
-                            //         success:function(respon){
-                            //             var ff =JSON.parse(respon);
-                            //             prompt(hey);
-                            //             if(ff.statusCode==201){
-                                            
-                            //             }
-                            //         }
-                            //     });
-                            // }
-
                             $.ajax({
                                 url:'http://localhost/myphp/myshuttle/inc/addstops.php',
                                 type: 'POST',
@@ -71,7 +51,7 @@ $(document).ready(function(){
                                     var ff =JSON.parse(respon);
                                     
                                     if(ff.statusCode==201){
-                                        prompt(hey);
+                                        location.href="../dashboard.php";
                                     }
                                 }
                             });

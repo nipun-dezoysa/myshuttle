@@ -1,0 +1,31 @@
+.dash-body{
+    display: flex;
+    width: 850px;
+    justify-content: space-between;
+}
+.dash-section{
+    font-family: Arial, Helvetica, sans-serif;
+    width: 400px;
+    background-color: white;
+    border: gray solid 2px;
+    border-radius: 5px;
+}
+.dash-section-head{
+    display: flex;
+    background-color: gray;
+    justify-content: space-between;
+    padding: 5px;
+}
+.dash-section-body{
+    padding: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.dash-section-body-item{
+    margin-top: 3px;
+    padding: 2px;
+    display: flex;
+    justify-content: space-between;
+    background-color: gray;
+}
