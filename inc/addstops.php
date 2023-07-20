@@ -5,14 +5,6 @@
         $city = array();
         $city = $_POST['city'];
         $rid = $_POST['rid'];
-
-        // $res=mysqli_query($connection,"SELECT * FROM city WHERE name='".$city."'");
-        // if (mysqli_num_rows($res)<1){
-		// 	mysqli_query($connection,"INSERT INTO city(name) VALUES ('".$city."')");
-		// }
-        // $newRes=mysqli_query($connection,"SELECT * FROM city WHERE name='".$city."'");
-        // $row=mysqli_fetch_assoc($newRes);
-        // $c_id = $row["c_id"];
         $i =0;
         foreach($city as $m){
             $i++;

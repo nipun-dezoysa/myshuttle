@@ -33,7 +33,7 @@
                         $stname = mysqli_fetch_assoc(mysqli_query($connection,"SELECT * FROM city WHERE c_id='".$h["c_id"]."'"));
                         $endname = mysqli_fetch_assoc(mysqli_query($connection,"SELECT * FROM city WHERE c_id='".$g["c_id"]."'"));
                         echo "<div class='dash-section-body-item'>";
-                        echo "<div class='item-name'>".$stname["name"]." - ".$endname["name"]."</div>";
+                        echo "<div class='item-name'><a href='dashboard/route.php?id=".$row['r_id']."'>".$stname["name"]." - ".$endname["name"]."</a></div>";
                         echo "<input type='button' class='item-delete' value='delete'></div>";
 
                     }
@@ -45,7 +45,7 @@
         <div class="dash-section">
             <div class="dash-section-head">
                 <div>Vehicles</div>
-                <input type="button" id="cvehi" class="route-add" value="Add new Vehicle">
+                <button id="add">add</button>
             </div>
             <div class="dash-section-body">
                 <?php
