@@ -23,6 +23,7 @@ function addTurn(a,b){
         }
         else valid=false;
     }
+    
     if(valid){
         $.ajax({
             url:'http://localhost/myphp/myshuttle/inc/route_inc.php',
@@ -30,7 +31,7 @@ function addTurn(a,b){
             data: {
                 times: time,
                 rid: b,
-                type: order			
+                type: order		
             },
             success:function(respon){
                 var ff =JSON.parse(respon);
@@ -42,4 +43,25 @@ function addTurn(a,b){
         });
     }
     $( "#add" ).prop( "disabled", false );
+}
+
+function addVehicle(d){
+    $( "#vehicleadd" ).prop( "disabled", true );
+    var vehicle = document.getElementById("vehicle").value;
+    $.ajax({
+        url:'http://localhost/myphp/myshuttle/inc/addvehicle_inc.php',
+        type: 'POST',
+        data: {
+            vid: vehicle,
+            rid: d	
+        },
+        success:function(respon){
+            var ff =JSON.parse(respon);
+            
+            if(ff.statusCode==201){
+                location.reload();
+            }
+        }
+    });
+    $( "#vehicleadd" ).prop( "disabled", false );
 }

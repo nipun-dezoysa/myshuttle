@@ -1,6 +1,11 @@
+.boxs{
+    display: flex;
+    flex-wrap: wrap;
+}
 .route{
     width: 800px;
     border: gray solid 2px;
+    margin-right: 5px;
 }
 .route-body{
     display: flex;
@@ -56,4 +61,21 @@
 }
 .pre-stop{
     margin-left: 5px;
+}
+.vehi{
+    width: 250px;
+    border: gray solid 2px;
+}
+.vehi-add{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
+.vehi-item{
+    display: flex;
+    margin: 2px;
+    padding: 3px;
+    justify-content: space-between;
+    background-color: gray;
 }
