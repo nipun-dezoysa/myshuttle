@@ -1,0 +1,35 @@
+.contact-us-div{
+    padding-top: 5px;
+    padding-bottom: 100px;
+}
+.contact-form {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+}
+
+.contact-form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+.btn-submit {
+    border-radius: 0;
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+}
+
+.btn-submit:hover, .btn-submit:focus {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    color: #fff;
+}

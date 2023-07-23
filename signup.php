@@ -7,9 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
     <link rel="stylesheet" href="css/inupbox.css" type="text/css">
-    <script src="https://kit.fontawesome.com/296e3cb483.js" crossorigin="anonymous"></script>
-</head>
-<body>
+
+    <link rel="stylesheet" href="./styles/login.css" />
+    <link rel="stylesheet" href="./styles/footer.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    
+    <?php include_once("header.php");?>
+
+    <div class="container">
     <div class="main-box">
         <div class="pic-box">
             <img src="img/signupcover.png" alt="lady working with laptop">
@@ -52,7 +57,9 @@
             <p class="bott-line">Already have an account? <span><a href="signin.php">Sign in</a></span></p>
         </div>
     </div>
+    </div>
+
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="js/signup.js"></script>
-</body>
-</html>
+
+    <?php include_once("footer.php");?>

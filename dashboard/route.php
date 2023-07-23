@@ -53,7 +53,7 @@
                         $c++;
                         echo "<div class='pre'><div class='pre-head'>";
                         echo "<div class='pre-head-name'>Turn - ".$c."</div>";
-                        echo "<div class='pre-head-delete'><input type='button' value='delete'></div></div>";
+                        echo "<div class='pre-head-delete'><input type='button' onClick='deleteItem(".$tt["t_id"].",3)' value='delete'></div></div>";
                         echo "<div class='pre-body'>";
                         $times=mysqli_query($connection,"SELECT * FROM time_table WHERE t_id='".$tt["t_id"]."'");
                         foreach ($times as $clock) {
@@ -62,7 +62,7 @@
                             $name=mysqli_query($connection,"SELECT * FROM city WHERE c_id='".$f["c_id"]."'");
                             $g=mysqli_fetch_assoc($name);
                             
-                            echo "<div class='pre-stop'>".$g['name']." - ".($clock['tim']/100)."</div>";
+                            echo "<div class='pre-stop'>".$g['name']." - ".intdiv($clock['tim'], 100).":".($clock['tim']%100)."</div>";
 
                         }
                         echo "</div></div>";
@@ -93,7 +93,7 @@
                 foreach($turnVehicle as $vehi){
                     $wahanaya=mysqli_query($connection,"SELECT * FROM vehicle WHERE v_id='".$vehi["v_id"]."'");
                     $vehiName=mysqli_fetch_assoc($wahanaya);
-                    echo "<div class='vehi-item'><div class='vehicle-name'>".$vehiName['reg_num']."</div><div class='vehicle-delete'><input type='button' value='delete'></div></div>";
+                    echo "<div class='vehi-item'><div class='vehicle-name'>".$vehiName['reg_num']."</div><div class='vehicle-delete'><input type='button' onClick='deleteItem(".$vehi["a_id"].",4)' value='delete'></div></div>";
                 }
                 ?>
             </div>

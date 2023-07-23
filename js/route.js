@@ -65,3 +65,21 @@ function addVehicle(d){
     });
     $( "#vehicleadd" ).prop( "disabled", false );
 }
+
+function deleteItem(a,b){
+        
+    $.ajax({
+        url:'http://localhost/myphp/myshuttle/inc/delete_inc.php',
+        type: 'POST',
+        data:{
+            id: a,
+            type: b            
+        },
+        success:function(response){
+            var res =JSON.parse(response);
+            if(res.statusCode==200){
+                location.reload();
+            }
+        }
+        });
+}

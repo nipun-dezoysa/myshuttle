@@ -1,0 +1,55 @@
+/* Base styles for both login and signup buttons */
+
+.login-signup{
+align-content: center;
+}
+.login-btn {
+  display: inline-block;
+  padding: 5px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 2px solid #ffffff;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  
+}
+
+.signup-btn {
+  display: inline-block;
+  padding: 5px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 2px solid #ffffff;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+/* Styling for the login button */
+.login-btn {
+  margin-right: 0px;
+}
+
+.login-btn:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Styling for the signup button */
+.signup-btn {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.signup-btn:hover {
+  background-color: #007bff;
+}
+
+/* Optional: You can add margin to the buttons if needed */
+.login-btn:not(:last-child),
+.signup-btn:not(:last-child) {
+  margin-right: 10px;
+}
+
+

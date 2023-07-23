@@ -1,0 +1,12 @@
+.vdetail h1{
+    font-size: 30px;
+}
+.vdetail input[type="text"]{
+    width: 300px;
+    height: 25px;
+    margin-bottom: 5px;
+}
+.save{
+    background-color: #20c997;
+    width: 100px;
+}

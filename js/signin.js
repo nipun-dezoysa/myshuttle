@@ -1,4 +1,4 @@
-$(document).ready(function(){
+ $(document).ready(function(){
     $("#login").on("click",function(){
         $( "#login" ).prop( "disabled", true );
         var email = $("#email").val();

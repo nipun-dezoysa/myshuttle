@@ -28,10 +28,23 @@
     <link href="library/bootstrap-5/bootstrap.min.css" rel="stylesheet" />
     <script src="library/bootstrap-5/bootstrap.bundle.min.js"></script>
     <script src="library/autocomplete.js"></script>
-</head>
-<body>
 
-    <div class="body-plan">
+    <link rel="stylesheet" href="../styles/login.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <link rel="stylesheet" href="../styles/index.css" />
+
+    <link rel="stylesheet" href="../css/dashboard.css" type="text/css">
+
+    <?php include_once('../header.php');?>
+
+    <div class="container dash-main">
+        <div class="dash-side">
+            <a href="../dashboard.php"><div class="dash-links">Dashboard</div></a>
+            <div class="dash-links-select">New Route</div>
+            <a href="vehicle.php"><div class="dash-links">Add Vehicle</div></a>
+        </div>
+        <div class="dash-body">
+        <div class="body-plan">
         <form name="log">
             <div class="plan-select">
                 Route type: <input type="radio" name="type" value="shuttle">shuttle <input type="radio" name="type" value="service">service <input type="radio" name="type" value="ctb">ctb
@@ -39,7 +52,7 @@
             <div class="places" id="places">
             </div>
             <div class="plan-dml">
-                <input type="text" id="loc" placeholder="type next stop">
+                <input type="text" autocomplete="off" id="loc" placeholder="type next stop">
                 <input type="button" id="add" value="Add">
                 <input type="button" id="delete" value="Delete">
             </div>
@@ -48,6 +61,10 @@
             </div>
         </form>
     </div>
+        </div>
+    </div>
+
+    
 
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="../js/routeplan.js"></script>
@@ -60,5 +77,5 @@
         highlightClass : 'fw-bold text-primary'
     });     
     </script>
-</body>
-</html>
+
+    <?php include_once('../footer.php');
