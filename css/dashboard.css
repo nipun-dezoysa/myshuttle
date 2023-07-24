@@ -27,6 +27,8 @@
 .dash-body{
     display: flex;
     width: 80%;
+    flex-wrap: wrap;
+    flex-grow: initial;
     justify-content: space-evenly;
 }
 .dash-section{
@@ -67,6 +69,10 @@ input[type="button"]{
     border: none;
     border-radius: 5px;
     
+    font-weight: 500;
+}
+input[type="number"]{
+    border: none;
     font-weight: 500;
 }
 .butt-add{

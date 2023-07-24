@@ -8,6 +8,7 @@
         exit();
     }
     require_once("../inc/connection.php");
+    require_once("../inc/calculations_inc.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,9 +17,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Route</title>
     <link rel="stylesheet" href="../css/route.css" type="text/css">
-</head>
-<body>
-    <div class="boxs">
+
+    <link rel="stylesheet" href="../styles/login.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <link rel="stylesheet" href="../styles/index.css" />
+
+    <link rel="stylesheet" href="../css/dashboard.css" type="text/css">
+
+    <?php include_once("../header.php");?>
+
+    <div class="container dash-main">
+        <div class="dash-side">
+            <a href="../dashboard.php"><div class="dash-links">Dashboard</div></a>
+            <div class="dash-links-select">New Route</div>
+            <a href="vehicle.php"><div class="dash-links">Add Vehicle</div></a>
+        </div>
+        <div class="dash-body">
         <div class="route">
             <div class="route-head">
                 Route
@@ -26,7 +40,7 @@
             <div class="route-body">
                 <div class="route-body-add">
                     <h3 >Create new turn</h3>
-                    <input type="button" id="order" onclick="changeOrder()" value="Normal">
+                    Route Order: <input type="button" id="order" onclick="changeOrder()" value="Normal">
                     
                     <div id="jj" class="route-stops">
                         <?php
@@ -43,27 +57,32 @@
                         } 
                         ?>
                     </div>
-                    <?php echo "<input type='button' id='add' onclick='addTurn(".$count.",".$_GET["id"].")' value='Add Turn'>"; ?>
+                    <?php echo "<input type='button' class='butt-add' id='add' onclick='addTurn(".$count.",".$_GET["id"].")' value='Add Turn'>"; ?>
                 </div>
                 <div class="route-body-pre">
                     <?php
                     $c = 0;
-                    $turns=mysqli_query($connection,"SELECT * FROM turn WHERE r_id='".$_GET["id"]."'");
+                    $turns=mysqli_query($connection,"SELECT turn.t_id,time_table.tim FROM turn INNER JOIN time_table ON turn.t_id=time_table.t_id WHERE turn.r_id=".$_GET['id']." GROUP BY time_table.t_id ORDER BY time_table.tim ASC;");
+                    
                     foreach($turns as $tt){
                         $c++;
                         echo "<div class='pre'><div class='pre-head'>";
                         echo "<div class='pre-head-name'>Turn - ".$c."</div>";
-                        echo "<div class='pre-head-delete'><input type='button' onClick='deleteItem(".$tt["t_id"].",3)' value='delete'></div></div>";
+                        echo "<div class='pre-head-delete'><input type='button' class='butt-delete' onClick='deleteItem(".$tt["t_id"].",3)' value='delete'></div></div>";
                         echo "<div class='pre-body'>";
                         $times=mysqli_query($connection,"SELECT * FROM time_table WHERE t_id='".$tt["t_id"]."'");
+                        $nfturns = mysqli_num_rows($times);
+                        $scount = 1;
                         foreach ($times as $clock) {
                             $stop=mysqli_query($connection,"SELECT * FROM stops WHERE s_id='".$clock["s_id"]."'");
                             $f=mysqli_fetch_assoc($stop);
                             $name=mysqli_query($connection,"SELECT * FROM city WHERE c_id='".$f["c_id"]."'");
                             $g=mysqli_fetch_assoc($name);
                             
-                            echo "<div class='pre-stop'>".$g['name']." - ".intdiv($clock['tim'], 100).":".($clock['tim']%100)."</div>";
-
+                            echo "<div class='pre-stop'>".$g['name']."(".setTime($clock['tim']).") ";
+                            if($scount!=$nfturns) echo "<i class='fa-solid fa-arrow-right fa-2xs'></i>";
+                            echo "</div>";
+                            $scount++;
                         }
                         echo "</div></div>";
                     }
@@ -85,7 +104,7 @@
                         }
                         ?>
                     </select>
-                <input type="button" <?php echo "onclick='addVehicle(".$_GET["id"].")'"; ?> id="vehicleadd" value="add Vehicle">
+                <input type="button" class='butt-add' <?php echo "onclick='addVehicle(".$_GET["id"].")'"; ?> id="vehicleadd" value="add Vehicle">
             </div>
             <div class="vehicle-pre">
                 <?php 
@@ -93,13 +112,15 @@
                 foreach($turnVehicle as $vehi){
                     $wahanaya=mysqli_query($connection,"SELECT * FROM vehicle WHERE v_id='".$vehi["v_id"]."'");
                     $vehiName=mysqli_fetch_assoc($wahanaya);
-                    echo "<div class='vehi-item'><div class='vehicle-name'>".$vehiName['reg_num']."</div><div class='vehicle-delete'><input type='button' onClick='deleteItem(".$vehi["a_id"].",4)' value='delete'></div></div>";
+                    echo "<div class='vehi-item'><div class='vehicle-name'>".$vehiName['reg_num']."</div><div class='vehicle-delete'><input type='button' class='butt-delete'  onClick='deleteItem(".$vehi["a_id"].",4)' value='delete'></div></div>";
                 }
                 ?>
             </div>
         </div>
-    </div>    
+        </div>
+    </div>
+  
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src= "../js/route.js"></script>
-</body>
-</html>
+
+    <?php include_once("../footer.php");?>

@@ -4,18 +4,23 @@
 }
 .route{
     width: 800px;
-    border: gray solid 2px;
+    border: #adb5bd solid 2px;
     margin-right: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
 }
 .route-body{
     display: flex;
+    flex-wrap: wrap;
 }
 .route-head{
     height: 30px;
-    background-color: gray;
+    background-color: #adb5bd;
+    font-weight: 500;
 }
 .route-body-add{
     width: 35%;
+    padding-left: 5px;
 }
 
 /* time add karana list eke order eka wenas karanna dana class eka */
@@ -34,7 +39,7 @@
 }
 .stop{
     margin-top: 2px;
-    background-color: gray;
+    background-color:#adb5bd;
     display: flex;
     justify-content: space-around;
 }
@@ -46,13 +51,15 @@
 
 }
 .pre{
-    border: gray solid 2px;
+    border: #adb5bd solid 2px;
     margin-top: 3px;
+    border-radius: 5px;
 }
 .pre-head{
+    padding: 2px;
     display: flex;
     justify-content: space-between;
-    background-color: gray;
+    background-color: #adb5bd;
 }
 .pre-body{
     
@@ -64,7 +71,8 @@
 }
 .vehi{
     width: 250px;
-    border: gray solid 2px;
+    border: #adb5bd solid 2px;
+    border-radius: 5px;
 }
 .vehi-add{
     display: flex;
@@ -77,5 +85,8 @@
     margin: 2px;
     padding: 3px;
     justify-content: space-between;
-    background-color: gray;
+    background-color: #adb5bd;
+}
+#add{
+    margin-top: 5px;
 }
