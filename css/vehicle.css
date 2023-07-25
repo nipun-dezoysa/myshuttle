@@ -7,6 +7,19 @@
     margin-bottom: 5px;
 }
 .save{
-    background-color: #20c997;
     width: 100px;
+}
+@media (max-width:900px) {
+    .vdetail{
+        width: 100%;
+    }
+    .vdetail h1{
+        font-size: 20px;
+    }
+    .vdetail input[type="text"]{
+        width: 100%;
+    }
+    .save{
+        width: 100%;
+    }
 }

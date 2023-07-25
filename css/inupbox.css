@@ -4,7 +4,8 @@
 .main-box{
     margin: 100px auto;
     width: 600px;
-    height: 400px;
+    min-height: 400px;
+    height: auto;
     display: flex;
     overflow: hidden;
     border-radius: 20px;
@@ -93,4 +94,22 @@ input[type=button]:hover{
 .bott-line{
     margin-top: 5px;
     font-size: 13px;
+}
+
+@media (max-width:900px) {
+    .main-box{
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+    }
+    .pic-box{
+        width: 100%;
+        padding: 10px;
+    }
+    .pic-box img{
+        width: 40%;
+    }
+    .form-box{
+        width: 100%;
+    }
 }

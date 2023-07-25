@@ -53,7 +53,7 @@
                             echo "<div class='stop'>";
                             echo "<div class='stop-name'>".$city['name']."</div>";
                             echo "<div class='stop-time'>";
-                            echo "<input type='number' maxlength='2' id='h".$count."' placeholder='hh'><input type='number' maxlength='2' id='m".$count."' placeholder='mm'> </div></div>";
+                            echo "<input type='number' maxlength='2' id='h".$count."' placeholder='hh'>:<input type='number' maxlength='2' id='m".$count."' placeholder='mm'> </div></div>";
                         } 
                         ?>
                     </div>

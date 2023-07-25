@@ -45,18 +45,19 @@
         </div>
         <div class="dash-body">
             <div class="body-plan">
+                <div class="plan-head">Route Plan</div>
                 <form name="log">
                     <div class="plan-select">
-                        Route type: <input type="radio" name="type" value="shuttle">shuttle <input type="radio" name="type" value="service">service <input type="radio" name="type" value="ctb">ctb
+                        Route type:<input type="radio" name="type" value="shuttle">shuttle <input type="radio" name="type" value="service">service <input type="radio" name="type" value="ctb">ctb
                     </div>
                     <div class="places" id="places"></div>
                     <div class="plan-dml">
                         <input type="text" autocomplete="off" id="loc" placeholder="type next stop">
-                        <input type="button" id="add" value="Add">
-                        <input type="button" id="delete" value="Delete">
+                        <input type="button" class="butt-add" id="add" value="Add">
+                        <input type="button" class="butt-delete" id="delete" value="Delete">
                     </div>
                     <div class="plan-ok">
-                        <input type="button" id="save" value="Save">
+                        <input type="button" class="butt-add" id="save" value="Save">
                     </div>
                 </form>
             </div>

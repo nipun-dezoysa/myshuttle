@@ -15,9 +15,10 @@ function addTurn(a,b){
     const time = [];
     let valid = true;
     for(let i=1;i<=a;i++){
-        var h = parseInt($("#h"+i).val());
-        var m = parseInt($("#m"+i).val());
-        if(h>=0 && h<24 && m>=0 && m<60 && h!='' && m!=''){
+        let h = $("#h"+i).val();
+        let m = $("#m"+i).val();
+        let gg = ""+m;
+        if(h>=0 && h<24 && m>=0 && m<60 && h!='' && m!='' && gg.length>1){
             let t = h+$("#m"+i).val();
             time.push(t);
         }

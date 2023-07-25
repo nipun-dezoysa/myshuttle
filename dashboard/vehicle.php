@@ -50,7 +50,7 @@
             <input type="text" name="name" placeholder="Driver Name" <?php if(isset($_GET["vid"])){echo "value='".$db['name']."'";}?>><br>
             <input type="text" name="nic"placeholder="Driver Nic" <?php if(isset($_GET["vid"])){echo "value='".$db['nic']."'";}?>><br>
             <input type="text" name="contact"placeholder="contact number" <?php if(isset($_GET["vid"])){echo "value='".$db['contact']."'";}?>><br>
-            <input type="button" class="save" id="save" value="Save">
+            <input type="button" class="save butt-add" id="save" value="Save">
         </form>
     </div>
         </div>

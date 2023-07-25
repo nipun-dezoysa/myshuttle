@@ -11,7 +11,7 @@
 }
 .route-body{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
 }
 .route-head{
     height: 30px;
@@ -42,13 +42,31 @@
     background-color:#adb5bd;
     display: flex;
     justify-content: space-around;
+    color: white;
+    font-weight: 600;
 }
 .stop-name{
     width: 90px;
 }
+.stop-time{
+    width: 84px;
+    display: flex;
+    justify-content: space-between;
+}
 .stop-time input[type=number]{
     width: 40px;
+    border-top: #adb5bd 2px solid;
+    border-bottom: #adb5bd 2px solid;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 .pre{
     border: #adb5bd solid 2px;
@@ -89,4 +107,22 @@
 }
 #add{
     margin-top: 5px;
+}
+
+@media (max-width:900px) {
+    .route{
+        width: 100%;
+    }
+    .route-body{
+        flex-direction: column;
+    }
+    .route-body-add{
+        width: 100%;
+    }
+    .route-body-pre{
+        width: 100%;
+    }
+    .vehi{
+        width: 100%;
+    }
 }

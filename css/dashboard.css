@@ -6,6 +6,8 @@
     width: 20%;
     background-color: #333;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
 }
 .dash-links{
     text-align: center;
@@ -13,12 +15,14 @@
     margin: 5px;
 }
 .dash-links-select{
+    border-radius: 3px;
     text-align: center;
     height: 30px;
     background-color: gray;
     margin: 5px;
 }
 .dash-links{
+    border-radius: 3px;
     text-decoration: none;
     color: white;
     font-weight: 600;
@@ -37,6 +41,7 @@
     background-color: white;
     border: #adb5bd solid 2px;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 .dash-section-head{
     display: flex;
@@ -68,7 +73,6 @@
 input[type="button"]{
     border: none;
     border-radius: 5px;
-    
     font-weight: 500;
 }
 input[type="number"]{
@@ -85,7 +89,37 @@ input[type="number"]{
     color: white;
 }
 
+.butt-save{
+    background-color: #28a745;
+    color: white;
+}
+
 .butt-edit{
     background-color: white;
     color: black;
+}
+
+@media (max-width:900px) {
+    .dash-main{
+        margin-top: 70px;
+        flex-direction: column;
+    }
+    .dash-side{
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-bottom: 10px;
+    }
+    .dash-links{
+        padding: 5px;
+    }
+    .dash-links-select{
+        padding: 5px;
+    }
+    .dash-body{
+        width: 100%;
+    }
+    .dash-section{
+        width: 100%;
+    }
 }

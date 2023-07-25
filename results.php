@@ -52,6 +52,10 @@
             $turnsRes = mysqli_query($connection,$sql);
             foreach($turnsRes as $turn){
 
+                if($turn["count"]!=2){
+                    continue;
+                }
+
                 $vehiclesDetails = mysqli_query($connection,"SELECT vassign.a_id,vassign.r_id,vehicle.reg_num,vehicle.air,vehicle.contact,vehicle.seats FROM vassign INNER JOIN vehicle on vehicle.v_id = vassign.v_id WHERE vassign.r_id = ".$turn['r_id'].";");
                 $vehicleCount = mysqli_num_rows($vehiclesDetails);
                 $vehiDetail = mysqli_fetch_assoc($vehiclesDetails);
@@ -61,7 +65,13 @@
                     $routeTypeValid=false;
                 }
 
-                if($turn['name']==$_GET['start'] && $turn['count']==2 && $vehicleCount>0 && $routeTypeValid){
+                $mss = mysqli_query($connection,"SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=".$turn['t_id']." AND city.name='".$_GET['start']."';");
+                $midStart = mysqli_fetch_assoc($mss);
+
+                $mee = mysqli_query($connection,"SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=".$turn['t_id']." AND city.name='".$_GET['end']."';");
+                $midEnd = mysqli_fetch_assoc($mee);
+                // $turn['name']==$_GET['start']
+                if(($midStart['tim']<$midEnd['tim'])&&($vehicleCount>0) && $routeTypeValid){
                     echo "<div class='result'><div class='s-type'>";
 
                     if($turn['types']==1)echo "Shuttle";
@@ -89,8 +99,7 @@
                         echo "<i class='fa-solid fa-arrow-right'></i>";
                     }
                     else{
-                        $mS = mysqli_query($connection,"SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=".$turn['t_id']." AND city.name='".$_GET['start']."';");
-                        $midStart = mysqli_fetch_assoc($mS);
+                        
                         echo "<div class='s-stop'><div class='s-stop-name'>".$turnStart['name']."</div><div class='s-stop-time'>".setTime($turnStart['tim'])."</div></div>";
                         echo "<i class='fa-solid fa-arrow-right'></i>";
                         echo "<div class='s-stop'><div class='s-stop-name'><b>".$midStart['name']."</b></div><div class='s-stop-time'><b>".setTime($midStart['tim'])."</b></div></div>";
@@ -101,8 +110,7 @@
                         echo "<div class='s-stop'><div class='s-stop-name'><b>".$turnEnd['name']."</b></div><div class='s-stop-time'><b>".setTime($turnEnd['tim'])."</b></div></div>";
                     }
                     else{
-                        $mE = mysqli_query($connection,"SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=".$turn['t_id']." AND city.name='".$_GET['end']."';");
-                        $midEnd = mysqli_fetch_assoc($mE);
+                        
                         echo "<div class='s-stop'><div class='s-stop-name'><b>".$midEnd['name']."</b></div><div class='s-stop-time'><b>".setTime($midEnd['tim'])."</b></div></div>";
                         echo "<i class='fa-solid fa-arrow-right'></i>";
                         echo "<div class='s-stop'><div class='s-stop-name'>".$turnEnd['name']."</div><div class='s-stop-time'>".setTime($turnEnd['tim'])."</div></div>";
