@@ -5,6 +5,13 @@
     width: 300px;
     height: 25px;
     margin-bottom: 5px;
+    border-radius: 2px;
+}
+.normal{
+    border: #adb5bd 3px solid;
+}
+.warning{
+    border: #dc3545 3px solid;
 }
 .save{
     width: 100px;

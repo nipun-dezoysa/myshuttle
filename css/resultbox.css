@@ -25,3 +25,10 @@ body{
 .vehicle-details{
     display: flex;
 }
+@media (max-width:900px) {
+    .result{
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 15px;
+    }
+}

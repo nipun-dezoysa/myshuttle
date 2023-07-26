@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="./styles/footer.css" />
     <link rel="stylesheet" href="./styles/index.css" />
     <link rel="stylesheet" href="./css/resultbox.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
     
     <?php include_once("header.php")?>
 
@@ -50,6 +51,9 @@
             . "ORDER BY time_table.tim ASC;";
 
             $turnsRes = mysqli_query($connection,$sql);
+            if(mysqli_num_rows($turnsRes)<1){
+                echo "<div class='not-found'><h1>not found any route</h1><p>check destination names or order</p></div>";
+            }
             foreach($turnsRes as $turn){
 
                 if($turn["count"]!=2){
@@ -77,7 +81,7 @@
                     if($turn['types']==1)echo "Shuttle";
                     elseif($turn['types']==2)echo "Service";
                     else echo "Ctb bus";
-
+                    echo " #".$turn['r_id']."/".$turn['t_id'];
                     echo "</div><div class='s-info'><div class='s-name'>";
                     $st = mysqli_query($connection,"SELECT stops.s_id,stops.r_id,city.name from stops INNER JOIN city on city.c_id=stops.c_id WHERE stops.r_id = ".$turn['r_id']." ORDER by stops.s_id ASC;");
                     $routeStart = mysqli_fetch_assoc($st);
@@ -88,7 +92,7 @@
                     echo "<div class='vehicle-details'><div class='s-reg'>".$vehiDetail['reg_num']."</div><div class='s-air'>";
                     if($vehiDetail['air']==1)echo "AC</div>";
                     else echo "Non-AC</div>";
-                    echo "<div class='s-contact'>".$vehiDetail['contact']."</div></div></div><div class='s-route'>";
+                    echo "<div class='s-contact'><a href='tel:".$vehiDetail['contact']."'><input type='button' class='butt-add' value='Contact'></a></div></div></div><div class='s-route'>";
 
                     $tS = mysqli_query($connection,"SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=".$turn['t_id']." ORDER BY time_table.tim ASC;");
                     $tE = mysqli_query($connection,"SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=".$turn['t_id']." ORDER BY time_table.tim DESC;");
@@ -115,14 +119,17 @@
                         echo "<i class='fa-solid fa-arrow-right'></i>";
                         echo "<div class='s-stop'><div class='s-stop-name'>".$turnEnd['name']."</div><div class='s-stop-time'>".setTime($turnEnd['tim'])."</div></div>";
                     }
-                    echo "</div><div class='full-route'>View Full Route</div></div>";
-
-
+                    echo "</div><div class='full-route'><a href='routeview.php?id=".$turn['r_id']."'>View Full Route</a></div></div>";
                 }
             }
 
         ?>        
     </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 
     <!-- Footer -->
     <?php include_once("footer.php")?>

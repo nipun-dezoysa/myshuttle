@@ -3,6 +3,7 @@ $(document).ready(function(){
     var count = 0;
     $("#add").on("click",function(){
         var city = $("#loc").val();
+        if(city!=''){
         cities.push(city);
         count++;
         const cityt = document.createElement("div");
@@ -11,6 +12,7 @@ $(document).ready(function(){
         cityt.setAttribute("id","id"+count);
         cityt.appendChild(citys);
         document.getElementById("places").appendChild(cityt);
+        }
         
     });
     $("#delete").on("click",function(){
