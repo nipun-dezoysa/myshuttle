@@ -30,6 +30,25 @@
     </style>
     <?php include_once("header.php")?>
     <!-- about us -->
+    <header class="about-header">
+      <div class="team-background" style="background-image: url(images/team.jpg); ">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h1 class="who-we-are text-center">Who We Are?
+              </h1>
+              
+              <p>&nbsp;</p>
+              <p class="text-center">
+                <a class="btn btn-dark btn-lg" href="#about-section" role="button"
+                  >Learn more</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
     <section class="about-us" >
       <div class="container-md">
         
