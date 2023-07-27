@@ -40,7 +40,7 @@ $(document).ready(function(){
         
         if(valid){
             $.ajax({
-            url:'http://localhost/myphp/myshuttle/inc/vehicle_inc.php',
+            url:'../inc/vehicle_inc.php',
             type: 'POST',
             data: $("#vehicle_detail").serialize(),
             success:function(response){

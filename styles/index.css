@@ -1,3 +1,6 @@
+body{
+  height: 100%;
+}
 .display-4{
     
   color: #ffffff;
@@ -9,6 +12,9 @@ padding-bottom: 20px;
 .searchs{
 height: 400px;
 
+}
+.nav-color{
+  background-color: #001A39;
 }
 .box{
 padding-top: 200px;
@@ -77,21 +83,48 @@ outline: none;
   width: 100%;
   justify-content: space-around;
 }
-
-.welcome-box span{
+.welcome-mid-des span{
   font-size: 30px;
-  font-weight: 600;
+  
 }
 
 .sum-count{
   font-size: 40px;
 }
-
+.feature{
+  border-radius: 15px;
+  transition: all 0.3s linear;
+}
 .feature:hover{
+  padding-top: 10px;
   color: white;
   font-weight: 600;
-  border-radius: 20px;
-  background-color: #19589f;
+  background-color: #002147;
+}
+.logo{
+  font-family: 'Carter One', cursive;
+  color: white;
+}
+.bottom-logo{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.welcome-mid{
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.welcome-mid-img{
+  width: 50%;
+}
+
+.welcome-mid-img img{
+  width: 100%;
+}
+.welcome-mid-des{
+  width: 50%;
+  font-size: 20px;
 }
 
 @media (max-width:900px) {
@@ -100,6 +133,17 @@ outline: none;
   }
   .searchs{
     height: 330px;
+  }
+  .welcome-mid{
+    flex-direction: column;
+  }
+  .welcome-mid-img{
+    width: 100%;
+  }
+  .welcome-mid-des{
+    width: 80%;
+    font-size: 15px;
+    text-align: center;
   }
   
 }

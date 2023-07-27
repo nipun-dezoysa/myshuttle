@@ -87,11 +87,11 @@
                     $routeStart = mysqli_fetch_assoc($st);
                     $ed = mysqli_query($connection,"SELECT stops.s_id,stops.r_id,city.name from stops INNER JOIN city on city.c_id=stops.c_id WHERE stops.r_id = ".$turn['r_id']." ORDER by stops.s_id DESC;");
                     $routeEnd = mysqli_fetch_assoc($ed);
-                    echo $routeStart['name']." - ".$routeEnd['name']."</div>";
+                    echo strtoupper($routeStart['name'])." - ".strtoupper($routeEnd['name'])."</div>";
                     
                     echo "<div class='vehicle-details'><div class='s-reg'>".$vehiDetail['reg_num']."</div><div class='s-air'>";
-                    if($vehiDetail['air']==1)echo "AC</div>";
-                    else echo "Non-AC</div>";
+                    if($vehiDetail['air']==1)echo "(AC)</div>";
+                    else echo "(non-AC)</div>";
                     echo "<div class='s-contact'><a href='tel:".$vehiDetail['contact']."'><input type='button' class='butt-add' value='Contact'></a></div></div></div><div class='s-route'>";
 
                     $tS = mysqli_query($connection,"SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=".$turn['t_id']." ORDER BY time_table.tim ASC;");

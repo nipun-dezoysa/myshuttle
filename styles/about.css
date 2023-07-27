@@ -103,10 +103,13 @@
 .team-card p {
   color: #5a5a5a;
 }
+.profile-link {
 
-.list-inline-item a i:hover {
-  transform: scale(2);
   color: rgb(0, 0, 0);
+}
+
+.profile-link:hover {
+  transform: scale(2);
 }
 
 .our-university {

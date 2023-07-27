@@ -86,9 +86,9 @@
           <p>UI/UX & Backend Developer</p>
           
           <ul class="list-inline">
-            <li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
-            <li class="list-inline-item"><a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-            <li class="list-inline-item"><a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a></li>
+            <li class="list-inline-item"><a class="profile-link" href="https://www.facebook.com/nipun.avishka.90" target="_blank"><i class="fab fa-facebook"></i></a></li>
+            <li class="list-inline-item"><a class="profile-link" href="https://www.linkedin.com/in/nipun-avishka-de-zoysa/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+            <li class="list-inline-item"><a class="profile-link" href="https://github.com/nipun-dezoysa" target="_blank"><i class="fab fa-github"></i></a></li>
           </ul>
         </div>
       </div>
@@ -104,9 +104,9 @@
           <p>UI/UX & Frondend Developer</p>
           
           <ul class="list-inline">
-            <li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
-            <li class="list-inline-item"><a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-            <li class="list-inline-item"><a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a></li>
+            <li class="list-inline-item"><a class="profile-link" href="https://www.facebook.com/chandika.sameera.31" target="_blank"><i class="fab fa-facebook"></i></a></li>
+            <li class="list-inline-item"><a class="profile-link" href="https://www.linkedin.com/in/sameera-jayakodi-6a3a81226/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+            <li class="list-inline-item"><a class="profile-link" href="https://github.com/sameerajayakodi" target="_blank"><i class="fab fa-github"></i></a></li>
           </ul>
         </div>
       </div>
@@ -119,9 +119,9 @@
           <p>Developer</p>
           
           <ul class="list-inline">
-            <li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
-            <li class="list-inline-item"><a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-            <li class="list-inline-item"><a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a></li>
+            <li class="list-inline-item"><a class="profile-link" href="https://www.facebook.com/dilshansanjeewa.deshappriya" target="_blank"><i class="fab fa-facebook"></i></a></li>
+            <li class="list-inline-item"><a class="profile-link" href="https://www.linkedin.com/in/sanjeewa-deshappriya-b1a446257/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+            <li class="list-inline-item"><a class="profile-link" href="https://github.com/sanjeewaDeshapriya" target="_blank"><i class="fab fa-github"></i></a></li>
           </ul>
         </div>
       </div>
@@ -134,27 +134,13 @@
           <p>UI/UX</p>
           
           <ul class="list-inline">
-            <li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
-            <li class="list-inline-item"><a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-            <li class="list-inline-item"><a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a></li>
+            <li class="list-inline-item"><a class="profile-link" href="https://www.facebook.com/chithraka.kalanamith/" target="_blank"><i class="fab fa-facebook"></i></a></li>
+            <li class="list-inline-item"><a class="profile-link" href="https://www.linkedin.com/in/chithraka-kalanamith/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+            <li class="list-inline-item"><a class="profile-link" href="https://github.com/chithraka-kal" target="_blank"><i class="fab fa-github"></i></a></li>
           </ul>
         </div>
       </div>
-    </div>
-  </div>
-</center>
-  </section>
-
-
-  <!-- second row -->
-  <section class="main-card-section">
-    <center>
-    <div class="card-section">
-     <div class="container mt-5">
-      
-      <div class="row">
-        
-        <div class="col-md-6 col-lg-3">
+      <div class="col-md-6 col-lg-3">
           <div class="team-card">
             <div class="image-container">
               <img src="./images/jithe.jpg" class="img-fluid rounded-circle" alt="Team Member">
@@ -163,9 +149,9 @@
             <p>QA & Researcher</p>
             
             <ul class="list-inline">
-              <li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
-              <li class="list-inline-item"><a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-              <li class="list-inline-item"><a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a></li>
+              <li class="list-inline-item"><a class="profile-link" href="https://www.facebook.com/jithendera.weerawardana" target="_blank"><i class="fab fa-facebook"></i></a></li>
+              <li class="list-inline-item"><a class="profile-link" href="https://www.linkedin.com/in/jithendra-weerawardhana/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+              <li class="list-inline-item"><a class="profile-link" href="https://github.com/jitheweerawardhana" target="_blank"><i class="fab fa-github"></i></a></li>
             </ul>
           </div>
         </div>
@@ -181,67 +167,55 @@
             <p>QA & Researcher</p>
             
             <ul class="list-inline">
-              <li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
-              <li class="list-inline-item"><a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-              <li class="list-inline-item"><a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a></li>
+              <li class="list-inline-item"><a class="profile-link" href="https://www.facebook.com/profile.php?id=100091295203435&mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook"></i></a></li>
+              <li class="list-inline-item"><a class="profile-link" href="https://www.linkedin.com/in/sakuni-sirimanna-56a775223/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+              <li class="list-inline-item"><a class="profile-link" href="https://github.com/SAKUNI123" target="_blank"><i class="fab fa-github"></i></a></li>
             </ul>
           </div>
         </div>
         <div class="col-md-6 col-lg-3">
           <div class="team-card">
             <div class="image-container">
-              <img src="./images/dp.jpg" class="img-fluid rounded-circle" alt="Team Member">
+              <img src="./images/dilshan.jpeg" class="img-fluid rounded-circle" alt="Team Member">
             </div>
             <h4>Dilshan Perera</h4>
             <p>Researcher</p>
             
             <ul class="list-inline">
-              <li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
-              <li class="list-inline-item"><a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-              <li class="list-inline-item"><a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a></li>
+              <li class="list-inline-item"><a class="profile-link" href="#" target="_blank"><i class="fab fa-facebook"></i></a></li>
+              <li class="list-inline-item"><a class="profile-link" href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+              <li class="list-inline-item"><a class="profile-link" href="https://github.com/Hirunidiv" target="_blank"><i class="fab fa-github"></i></a></li>
             </ul>
           </div>
         </div>
         <div class="col-md-6 col-lg-3">
           <div class="team-card">
             <div class="image-container">
-              <img src="./images/dp.jpg" class="img-fluid rounded-circle" alt="Team Member">
+              <img src="./images/hiruni.jpeg" class="img-fluid rounded-circle" alt="Team Member">
             </div>
             <h4>Hiruni Hansamali</h4>
             <p>Researcher</p>
             
             <ul class="list-inline">
-              <li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
-              <li class="list-inline-item"><a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-              <li class="list-inline-item"><a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a></li>
+              <li class="list-inline-item"><a class="profile-link" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
+              <li class="list-inline-item"><a class="profile-link" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+              <li class="list-inline-item"><a class="profile-link" href="https://github.com/Hirunidiv" target="_blank"><i class="fab fa-github"></i></a></li>
             </ul>
           </div>
         </div>
-      </div>
-    </div>
-  </center>
-    </section>
 
-    <!-- third row -->
-    <section class="main-card-section">
-      <center>
-      <div class="card-section">
-       <div class="container mt-5">
-       
-        <div class="row">
-          
-          <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-3">
             <div class="team-card">
               <div class="image-container">
-                <img src="./images/dp.jpg" class="img-fluid rounded-circle" alt="Team Member">
+                <img src="./images/janandi.jpeg" class="img-fluid rounded-circle" alt="Team Member">
               </div>
-              <h4>Janandi Janandi</h4>
+              <h4>Janandi Samarwickrma</h4>
               <p>Researcher</p>
               
               <ul class="list-inline">
-                <li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
-                <li class="list-inline-item"><a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-                <li class="list-inline-item"><a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a></li>
+                <li class="list-inline-item"><a class="profile-link" href="#" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                <li class="list-inline-item"><a class="profile-link" href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                <li class="list-inline-item"><a class="profile-link" href="https://github.com/Janandie" target="_blank"><i class="fab fa-github"></i></a></li>
               </ul>
             </div>
           </div>
@@ -257,18 +231,18 @@
               <p>Researcher</p>
               
               <ul class="list-inline">
-                <li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
-                <li class="list-inline-item"><a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-                <li class="list-inline-item"><a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a></li>
+                <li class="list-inline-item"><a class="profile-link" href="https://www.facebook.com/profile.php?id=100064853995657" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                <li class="list-inline-item"><a class="profile-link" href="https://www.linkedin.com/in/ravindu-lankathilaka/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                <li class="list-inline-item"><a class="profile-link" href="https://github.com/rav-indu" target="_blank"><i class="fab fa-github"></i></a></li>
               </ul>
             </div>
           </div>
-          
-          </div>
-        </div>
-      </div>
-    </center>
-      </section>    
+
+
+    </div>
+  </div>
+</center>
+</section>   
       <!-- our university -->
       <section class="our-university">
       <div class="container">
@@ -279,7 +253,7 @@
           </div>
           <div class="col-md-6">
             
-            <p class="about-description"><span style="font-size: 18px; font-weight:500;"><a href="https://www.nsbm.ac.lk/" target="_blank">NSBM Green University</a></span>, the nation’s premier degree-awarding institute, is the first of its kind in South Asia. It is a government-owned self-financed institute that operates under the purview of the Ministry of Education. As a leading educational centre in the country, NSBM has evolved into becoming a highly responsible higher education institute that offers unique opportunities and holistic education on par with international standards while promoting sustainable living.
+            <p class="about-description logo"><span style="font-size: 18px; font-weight:500;"><a href="https://www.nsbm.ac.lk/" target="_blank">NSBM Green University</a></span>, the nation’s premier degree-awarding institute, is the first of its kind in South Asia. It is a government-owned self-financed institute that operates under the purview of the Ministry of Education. As a leading educational centre in the country, NSBM has evolved into becoming a highly responsible higher education institute that offers unique opportunities and holistic education on par with international standards while promoting sustainable living.
 
               NSBM offers a plethora of undergraduate and postgraduate degree programmes under five faculties: Business, Computing, Engineering, Science and Postgraduate & Professional Advancement. These study programmes at NSBM are either its own programmes recognied by the University Grants Commission and the Ministry of Higher Education or world-class international programmes conducted in affiliation with top-ranked foreign universities such as University of Plymouth, UK, and Victoria University, Australia.
               

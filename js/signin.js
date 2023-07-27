@@ -32,7 +32,7 @@
         
         if(valid){
             $.ajax({
-            url:'http://localhost/myphp/myshuttle/inc/signin_inc.php',
+            url:'inc/signin_inc.php',
             type: 'POST',
             data: $("#input_form").serialize(),
             success:function(response){

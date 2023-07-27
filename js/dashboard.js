@@ -11,7 +11,7 @@
     function routeDelete(a){
         
         $.ajax({
-            url:'http://localhost/myphp/myshuttle/inc/routedel_inc.php',
+            url:'inc/routedel_inc.php',
             type: 'POST',
             data:{
                 rid: a,
@@ -28,7 +28,7 @@
     function vehicleDelete(a){
         
         $.ajax({
-            url:'http://localhost/myphp/myshuttle/inc/vehicledel_inc.php',
+            url:'inc/vehicledel_inc.php',
             type: 'POST',
             data:{
                 vid: a,

@@ -2,11 +2,15 @@
 <footer class="footer">
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
+        <div class="col-md-3">
+          <h1 class="logo bottom-logo">MYshuttle</h1>
+          <p class="bottom-logo">Safe Travel!</p>
+        </div>
+          <div class="col-md-6 col-xl-3">
             <h4>Contact Us</h4>
-            <p>Email: contact@example.com</p>
-            <p>Phone: +94 770309842</p>
-            <p>Address: 123 Street, City, Country</p>
+            <p>Email: myshuttlelk@gmail.com</p>
+            <p>Phone: +94 742285850</p>
+            <p>Address: Dampe, Homagama, Sri Lanka</p>
           </div>
           <div class="col-md-3">
             <h4>Useful Links</h4>
@@ -21,19 +25,23 @@
             <ul class="list-unstyled social-icons">
               <!-- Font Awesome icons for Facebook, Twitter, and Instagram -->
               <li>
-                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i> FaceBook</a>
               </li>
               <li>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
               </li>
               <li>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i> Instergram</a>
               </li>
             </ul>
           </div>
         </div>
-        <hr />
-        <p class="copyright">&copy; 2023 Your Website. All rights reserved.</p>
+        
+      </div>
+      <div class="footer-bottom-area">
+        <div class="container">
+        <p class="copyright">&copy; 2023 MyShuttle. All rights reserved.</p>
+        </div>
       </div>
     </footer>
 

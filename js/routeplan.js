@@ -33,7 +33,7 @@ $(document).ready(function(){
                 var isRouteCreated = false;
                 var r_id = 1;
                 $.ajax({
-                    url:'http://localhost/myphp/myshuttle/inc/routecreate_inc.php',
+                    url:'../inc/routecreate_inc.php',
                     type: 'POST',
                     data: {
                         type: types			
@@ -43,7 +43,7 @@ $(document).ready(function(){
                         if(res.statusCode==200){
                             r_id = res.rid;
                             $.ajax({
-                                url:'http://localhost/myphp/myshuttle/inc/addstops.php',
+                                url:'../inc/addstops.php',
                                 type: 'POST',
                                 data: {
                                     city: cities,

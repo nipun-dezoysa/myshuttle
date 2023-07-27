@@ -27,7 +27,7 @@ function addTurn(a,b){
     
     if(valid){
         $.ajax({
-            url:'http://localhost/myphp/myshuttle/inc/route_inc.php',
+            url:'../inc/route_inc.php',
             type: 'POST',
             data: {
                 times: time,
@@ -50,7 +50,7 @@ function addVehicle(d){
     $( "#vehicleadd" ).prop( "disabled", true );
     var vehicle = document.getElementById("vehicle").value;
     $.ajax({
-        url:'http://localhost/myphp/myshuttle/inc/addvehicle_inc.php',
+        url:'../inc/addvehicle_inc.php',
         type: 'POST',
         data: {
             vid: vehicle,
@@ -70,7 +70,7 @@ function addVehicle(d){
 function deleteItem(a,b){
         
     $.ajax({
-        url:'http://localhost/myphp/myshuttle/inc/delete_inc.php',
+        url:'../inc/delete_inc.php',
         type: 'POST',
         data:{
             id: a,
