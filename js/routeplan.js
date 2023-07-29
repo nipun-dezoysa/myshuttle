@@ -12,6 +12,7 @@ $(document).ready(function(){
         cityt.setAttribute("id","id"+count);
         cityt.appendChild(citys);
         document.getElementById("places").appendChild(cityt);
+        document.getElementById("loc").value = "";
         }
         
     });

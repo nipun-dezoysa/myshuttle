@@ -14,7 +14,7 @@
     
     <?php include_once("header.php");?>
 
-    <div class="container">
+    <div class="container display-body">
     <div class="main-box">
         <div class="pic-box">
             <img src="img/signupcover.png" alt="lady working with laptop">

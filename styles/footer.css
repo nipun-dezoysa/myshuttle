@@ -38,6 +38,7 @@
 }
 @media (max-width:500px) {
     .footer {
+        margin-top: 10px;
         position: relative;
         bottom: 0;
     }

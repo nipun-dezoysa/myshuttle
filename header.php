@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./styles/footer.css" />
+    <link rel="icon" type="image/x-icon" href="https://myshuttle.000webhostapp.com/Images/favicon.ico">
 
   </head>
   <body>
@@ -34,7 +35,7 @@
               <a class="nav-link" href="https://myshuttle.000webhostapp.com/aboutus.php">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contactUs.html">Contact</a>
+              <a class="nav-link" href="https://myshuttle.000webhostapp.com/contactus.php">Contact</a>
             </li>
           </ul>
           <div class="login-signup">
@@ -53,7 +54,7 @@
                 if(isset($_SESSION["id"])){
                   echo '<a class="nav-link" href="https://myshuttle.000webhostapp.com/inc/logout.php"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i> Log Out</a>'; 
                 }
-                else echo '<a class="nav-link" href="https://myshuttle.000webhostapp.com/signin.php"><button class="signup-btn">Sign Up</button></a>';
+                else echo '<a class="nav-link" href="https://myshuttle.000webhostapp.com/signup.php"><button class="signup-btn">Sign Up</button></a>';
                 ?>
                 
               </li>

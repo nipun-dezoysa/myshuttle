@@ -30,6 +30,7 @@ padding-left: 5px;
 }
 .search-box input[type="text"]{
 width: 30%;
+height: 100%;
 border: none;
 outline: none;
 }
@@ -126,6 +127,9 @@ outline: none;
   width: 50%;
   font-size: 20px;
 }
+.chnge-pic{
+  cursor: pointer;
+}
 
 @media (max-width:900px) {
   .box{
@@ -141,9 +145,26 @@ outline: none;
     width: 100%;
   }
   .welcome-mid-des{
-    width: 80%;
+    text-align: center;
+    width: 100%;
     font-size: 15px;
     text-align: center;
   }
+  .search-box{
+    font-size: 12px;
+  }
+  .search-box select{
+    width: auto;
   
+  }
+  .search-box .search-btn{
+    padding: 0;
+  
+  }
+  .search-box input[type="submit"]{
+    width: 70px;
+  }
+  .search-box input[type="submit"]{
+    font-size: 12px;
+  }
 }

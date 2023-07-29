@@ -4,7 +4,7 @@
          <form action="results.php">
           <div class="search-box">
             <input type="text" id="ori" name="start" placeholder="Enter Origin" <?php if(isset($_GET['start']))echo "value='".$_GET['start']."'" ?>>
-            <i onclick="changedes()" class="fa-solid fa-right-left"></i>
+            <i onclick="changedes()" class="fa-solid fa-right-left chnge-pic"></i>
             <input type="text" id="des" name="end" placeholder="Enter Destination"<?php if(isset($_GET['end']))echo "value='".$_GET['end']."'" ?>>
             <select name="type">
               <option value="0" <?php if(isset($_GET['type'])){if($_GET['type']==0)echo 'selected';} ?>>All</option>
@@ -18,11 +18,10 @@
     </div>
     <script>
       function changedes(){
-        prompt("hey");
-  var start = $("#ori").val();
-  var end = $("#des").val();
-  document.getElementById("ori").value = start;
-  document.getElementById("des").value = end;
-}
+          var start = $("#ori").val();
+          var end = $("#des").val();
+          document.getElementById("ori").value = end;
+          document.getElementById("des").value = start;
+      }
     </script>
     

@@ -25,7 +25,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Transport</title>
+    <title>Result</title>
 
     <link rel="stylesheet" href="./styles/login.css" />
     <link rel="stylesheet" href="./styles/footer.css" />
@@ -76,11 +76,11 @@
                 $midEnd = mysqli_fetch_assoc($mee);
                 // $turn['name']==$_GET['start']
                 if(($midStart['tim']<$midEnd['tim'])&&($vehicleCount>0) && $routeTypeValid){
-                    echo "<div class='result'><div class='s-type'>";
+                    echo "<div class='result'><div class='s-type ";
 
-                    if($turn['types']==1)echo "Shuttle";
-                    elseif($turn['types']==2)echo "Service";
-                    else echo "Ctb bus";
+                    if($turn['types']==1)echo "shuttle'>Shuttle";
+                    elseif($turn['types']==2)echo "service'>Service";
+                    else echo "ctb'>Ctb bus";
                     echo " #".$turn['r_id']."/".$turn['t_id'];
                     echo "</div><div class='s-info'><div class='s-name'>";
                     $st = mysqli_query($connection,"SELECT stops.s_id,stops.r_id,city.name from stops INNER JOIN city on city.c_id=stops.c_id WHERE stops.r_id = ".$turn['r_id']." ORDER by stops.s_id ASC;");
