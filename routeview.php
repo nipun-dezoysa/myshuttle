@@ -17,11 +17,39 @@
     // }
 ?>
 <?php
-    $hh = mysqli_query($connection,"SELECT vassign.r_id,vassign.v_id,vehicle.name,vehicle.nic,vehicle.reg_num,vehicle.seats,vehicle.model,vehicle.air,vehicle.contact,user.f_name FROM vassign INNER JOIN vehicle ON vassign.v_id=vehicle.v_id INNER JOIN user ON user.u_id=vehicle.u_id WHERE vassign.r_id=".$_GET['id'].";");
+    $query2 = "SELECT vassign.r_id,vassign.v_id,vehicle.name,vehicle.nic,vehicle.reg_num,vehicle.seats,vehicle.model,vehicle.air,vehicle.contact,user.f_name FROM vassign INNER JOIN vehicle ON vassign.v_id=vehicle.v_id INNER JOIN user ON user.u_id=vehicle.u_id WHERE vassign.r_id=?;";
+    $stmt2 = mysqli_stmt_init($connection);
+    if(!mysqli_stmt_prepare($stmt2,$query2)){
+        header('Location:index.php');
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt2,"s",$_GET['id']);
+    mysqli_stmt_execute($stmt2);
+    $hh = mysqli_stmt_get_result($stmt2);
+    mysqli_stmt_close($stmt2);
     $vehicle = mysqli_fetch_assoc($hh);
-    $startName = mysqli_fetch_assoc(mysqli_query($connection,"SELECT stops.s_id,stops.r_id,city.name from stops INNER JOIN city on city.c_id=stops.c_id WHERE stops.r_id = ".$_GET['id']." ORDER by stops.s_id ASC;"));
-    $endName = mysqli_fetch_assoc(mysqli_query($connection,"SELECT stops.s_id,stops.r_id,city.name from stops INNER JOIN city on city.c_id=stops.c_id WHERE stops.r_id = ".$_GET['id']." ORDER by stops.s_id DESC;"));
-    
+
+    $query3 = "SELECT stops.s_id,stops.r_id,city.name from stops INNER JOIN city on city.c_id=stops.c_id WHERE stops.r_id = ? ORDER by stops.s_id ASC;";
+    $stmt3 = mysqli_stmt_init($connection);
+    if(!mysqli_stmt_prepare($stmt3,$query3)){
+        header('Location:index.php');
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt3,"i",$_GET['id']);
+    mysqli_stmt_execute($stmt3);
+    $startName = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt3));
+    mysqli_stmt_close($stmt3);
+
+    $query4 = "SELECT stops.s_id,stops.r_id,city.name from stops INNER JOIN city on city.c_id=stops.c_id WHERE stops.r_id = ? ORDER by stops.s_id DESC;";
+    $stmt4 = mysqli_stmt_init($connection);
+    if(!mysqli_stmt_prepare($stmt4,$query4)){
+        header('Location:index.php');
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt4,"i",$_GET['id']);
+    mysqli_stmt_execute($stmt4);
+    $endName = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt4));
+    mysqli_stmt_close($stmt4);
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,21 +87,50 @@
         <div class="turn-section-name">Turns <i class="fa-solid fa-turn-down"></i></div>
                     <?php
                     $c = 0;
-                    $turns=mysqli_query($connection,"SELECT turn.t_id,time_table.tim FROM turn INNER JOIN time_table ON turn.t_id=time_table.t_id WHERE turn.r_id=".$_GET['id']." GROUP BY time_table.t_id ORDER BY time_table.tim ASC;");
+                    $query5 = "SELECT turn.t_id,time_table.tim FROM turn INNER JOIN time_table ON turn.t_id=time_table.t_id WHERE turn.r_id=? GROUP BY time_table.t_id ORDER BY time_table.tim ASC;";
+                    $stmt5 = mysqli_stmt_init($connection);
+                    if(!mysqli_stmt_prepare($stmt5,$query5)){
+                        header('Location:index.php');
+                        exit();
+                    }
+                    mysqli_stmt_bind_param($stmt5,"s",$_GET['id']);
+                    mysqli_stmt_execute($stmt5);
+                    $turns = mysqli_stmt_get_result($stmt5);
+                    mysqli_stmt_close($stmt5);
                     
                     foreach($turns as $tt){
                         $c++;
                         echo "<div class='turns-body'>";
                         echo "<div class='turns-head'>Turn ".$c."</div>";
                         echo "<div class='turns-turn'>";
-                        $times=mysqli_query($connection,"SELECT * FROM time_table WHERE t_id='".$tt["t_id"]."'");
+
+                        $query6 = "SELECT * FROM time_table WHERE t_id=?";
+                        $stmt6 = mysqli_stmt_init($connection);
+                        if(!mysqli_stmt_prepare($stmt6,$query6)){
+                            header('Location:index.php');
+                            exit();
+                        }
+                        mysqli_stmt_bind_param($stmt6,"s",$tt["t_id"]);
+                        mysqli_stmt_execute($stmt6);
+                        $times = mysqli_stmt_get_result($stmt6);
+                        mysqli_stmt_close($stmt6);
+
                         $nfturns = mysqli_num_rows($times);
                         $scount = 1;
                         foreach ($times as $clock) {
-                            $stop=mysqli_query($connection,"SELECT * FROM stops WHERE s_id='".$clock["s_id"]."'");
-                            $f=mysqli_fetch_assoc($stop);
-                            $name=mysqli_query($connection,"SELECT * FROM city WHERE c_id='".$f["c_id"]."'");
-                            $g=mysqli_fetch_assoc($name);
+
+                            $query7 = "SELECT city.name FROM stops INNER JOIN city ON city.c_id = stops.c_id WHERE s_id=?;";
+                            $stmt7 = mysqli_stmt_init($connection);
+                            if(!mysqli_stmt_prepare($stmt7,$query7)){
+                                header('Location:index.php');
+                                exit();
+                            }
+                            mysqli_stmt_bind_param($stmt7,"s",$clock["s_id"]);
+                            mysqli_stmt_execute($stmt7);
+                            $stop = mysqli_stmt_get_result($stmt7);
+                            mysqli_stmt_close($stmt7);
+
+                            $g=mysqli_fetch_assoc($stop);
                             
                             echo "<div class='turns-stop'><div class='turn-stop-name'>".$g['name']."</div><div class='turn-stop-time'>".setTime($clock['tim'])."</div></div>";
                             if($scount!=$nfturns) echo "<i class='fa-solid fa-arrow-right'></i>";
@@ -87,7 +144,18 @@
     <div class="container maincomment">
         
         <?php
-        $comments = mysqli_query($connection,"SELECT comment.co_id,comment.u_id,user.f_name,comment.dates,comment.message,comment.rating FROM `comment` INNER JOIN user ON comment.u_id=user.u_id WHERE comment.r_id=".$_GET['id']." ORDER BY comment.co_id DESC");
+
+        $query8 = "SELECT comment.co_id,comment.u_id,user.f_name,comment.dates,comment.message,comment.rating FROM `comment` INNER JOIN user ON comment.u_id=user.u_id WHERE comment.r_id=? ORDER BY comment.co_id DESC";
+        $stmt8 = mysqli_stmt_init($connection);
+        if(!mysqli_stmt_prepare($stmt8,$query8)){
+            header('Location:index.php');
+            exit();
+        }
+        mysqli_stmt_bind_param($stmt8,"s",$_GET['id']);
+        mysqli_stmt_execute($stmt8);
+        $comments = mysqli_stmt_get_result($stmt8);
+        mysqli_stmt_close($stmt8);
+
         ?>
         <div class="comment">
             <div class="turn-section-name">Comments</div>
@@ -142,7 +210,17 @@
                     <?php } ?>
                     
                     <?php 
-                    $replys = mysqli_query($connection,"SELECT reply.re_id,reply.u_id,user.f_name,reply.dates,reply.message FROM reply INNER JOIN user ON user.u_id=reply.u_id WHERE reply.co_id=".$com['co_id']);
+                    $query9 = "SELECT reply.re_id,reply.u_id,user.f_name,reply.dates,reply.message FROM reply INNER JOIN user ON user.u_id=reply.u_id WHERE reply.co_id=?;";
+                    $stmt9 = mysqli_stmt_init($connection);
+                    if(!mysqli_stmt_prepare($stmt9,$query9)){
+                        header('Location:index.php');
+                        exit();
+                    }
+                    mysqli_stmt_bind_param($stmt9,"s",$com['co_id']);
+                    mysqli_stmt_execute($stmt9);
+                    $replys = mysqli_stmt_get_result($stmt9);
+                    mysqli_stmt_close($stmt9);
+
                     foreach($replys as $rep){ ?>
                     <div class="comment-area">
                         <div class="comment-area-reply">

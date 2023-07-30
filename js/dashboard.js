@@ -8,30 +8,14 @@
 
     });
 
-    function routeDelete(a){
+    function deleteItem(a,b){
         
         $.ajax({
-            url:'inc/routedel_inc.php',
+            url:'inc/delete_inc.php',
             type: 'POST',
             data:{
-                rid: a,
-            },
-            success:function(response){
-                var res =JSON.parse(response);
-                if(res.statusCode==200){
-                    location.reload();
-                }
-            }
-            });
-    }
-
-    function vehicleDelete(a){
-        
-        $.ajax({
-            url:'inc/vehicledel_inc.php',
-            type: 'POST',
-            data:{
-                vid: a,
+                id: a,
+                type: b            
             },
             success:function(response){
                 var res =JSON.parse(response);

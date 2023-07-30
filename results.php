@@ -46,11 +46,20 @@
             . "INNER JOIN stops ON time_table.s_id = stops.s_id\n"
             . "INNER JOIN city ON city.c_id = stops.c_id\n"
             . "INNER JOIN route ON stops.r_id = route.r_id\n"
-            . "WHERE city.name = '".$_GET['start']."' OR city.name = '".$_GET['end']."'\n"
+            . "WHERE city.name = ? OR city.name = ?\n"
             . "GROUP BY time_table.t_id\n"
             . "ORDER BY time_table.tim ASC;";
 
-            $turnsRes = mysqli_query($connection,$sql);
+            $stmt1 = mysqli_stmt_init($connection);
+            if(!mysqli_stmt_prepare($stmt1,$sql)){
+                header('Location:index.php');
+                exit();
+            }
+            mysqli_stmt_bind_param($stmt1,"ss",$_GET['start'],$_GET['end']);
+            mysqli_stmt_execute($stmt1);
+            $turnsRes = mysqli_stmt_get_result($stmt1);
+            mysqli_stmt_close($stmt1);
+
             if(mysqli_num_rows($turnsRes)<1){
                 echo "<div class='not-found'><h1>not found any route</h1><p>check destination names or order</p></div>";
             }
@@ -60,7 +69,17 @@
                     continue;
                 }
 
-                $vehiclesDetails = mysqli_query($connection,"SELECT vassign.a_id,vassign.r_id,vehicle.reg_num,vehicle.air,vehicle.contact,vehicle.seats FROM vassign INNER JOIN vehicle on vehicle.v_id = vassign.v_id WHERE vassign.r_id = ".$turn['r_id'].";");
+                $query2 = "SELECT vassign.a_id,vassign.r_id,vehicle.reg_num,vehicle.air,vehicle.contact,vehicle.seats FROM vassign INNER JOIN vehicle on vehicle.v_id = vassign.v_id WHERE vassign.r_id =?;";
+                $stmt2 = mysqli_stmt_init($connection);
+                if(!mysqli_stmt_prepare($stmt2,$query2)){
+                    header('Location:index.php');
+                    exit();
+                }
+                mysqli_stmt_bind_param($stmt2,"s",$turn['r_id']);
+                mysqli_stmt_execute($stmt2);
+                $vehiclesDetails = mysqli_stmt_get_result($stmt2);
+                mysqli_stmt_close($stmt2);
+
                 $vehicleCount = mysqli_num_rows($vehiclesDetails);
                 $vehiDetail = mysqli_fetch_assoc($vehiclesDetails);
 
@@ -69,11 +88,22 @@
                     $routeTypeValid=false;
                 }
 
-                $mss = mysqli_query($connection,"SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=".$turn['t_id']." AND city.name='".$_GET['start']."';");
+                $query3 = "SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=? AND city.name=?;";
+                $stmt3 = mysqli_stmt_init($connection);
+                if(!mysqli_stmt_prepare($stmt3,$query3)){
+                    header('Location:index.php');
+                    exit();
+                }
+                mysqli_stmt_bind_param($stmt3,"ss",$turn['t_id'],$_GET['start']);
+                mysqli_stmt_execute($stmt3);
+                $mss = mysqli_stmt_get_result($stmt3);
                 $midStart = mysqli_fetch_assoc($mss);
 
-                $mee = mysqli_query($connection,"SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=".$turn['t_id']." AND city.name='".$_GET['end']."';");
+                mysqli_stmt_bind_param($stmt3,"ss",$turn['t_id'],$_GET['end']);
+                mysqli_stmt_execute($stmt3);
+                $mee = mysqli_stmt_get_result($stmt3);
                 $midEnd = mysqli_fetch_assoc($mee);
+                mysqli_stmt_close($stmt3);
                 // $turn['name']==$_GET['start']
                 if(($midStart['tim']<$midEnd['tim'])&&($vehicleCount>0) && $routeTypeValid){
                     echo "<div class='result'><div class='s-type ";
@@ -83,10 +113,31 @@
                     else echo "ctb'>Ctb bus";
                     echo " #".$turn['r_id']."/".$turn['t_id'];
                     echo "</div><div class='s-info'><div class='s-name'>";
-                    $st = mysqli_query($connection,"SELECT stops.s_id,stops.r_id,city.name from stops INNER JOIN city on city.c_id=stops.c_id WHERE stops.r_id = ".$turn['r_id']." ORDER by stops.s_id ASC;");
+
+                    $query4 = "SELECT stops.s_id,stops.r_id,city.name from stops INNER JOIN city on city.c_id=stops.c_id WHERE stops.r_id = ? ORDER by stops.s_id ASC;";
+                    $stmt4 = mysqli_stmt_init($connection);
+                    if(!mysqli_stmt_prepare($stmt4,$query4)){
+                        header('Location:index.php');
+                        exit();
+                    }
+                    mysqli_stmt_bind_param($stmt4,"s",$turn['r_id']);
+                    mysqli_stmt_execute($stmt4);
+                    $st = mysqli_stmt_get_result($stmt4);
+                    mysqli_stmt_close($stmt4);
                     $routeStart = mysqli_fetch_assoc($st);
-                    $ed = mysqli_query($connection,"SELECT stops.s_id,stops.r_id,city.name from stops INNER JOIN city on city.c_id=stops.c_id WHERE stops.r_id = ".$turn['r_id']." ORDER by stops.s_id DESC;");
+
+                    $query5 = "SELECT stops.s_id,stops.r_id,city.name from stops INNER JOIN city on city.c_id=stops.c_id WHERE stops.r_id = ? ORDER by stops.s_id DESC;";
+                    $stmt5 = mysqli_stmt_init($connection);
+                    if(!mysqli_stmt_prepare($stmt5,$query5)){
+                        header('Location:index.php');
+                        exit();
+                    }
+                    mysqli_stmt_bind_param($stmt5,"s",$turn['r_id']);
+                    mysqli_stmt_execute($stmt5);
+                    $ed = mysqli_stmt_get_result($stmt5);
+                    mysqli_stmt_close($stmt5);
                     $routeEnd = mysqli_fetch_assoc($ed);
+
                     echo strtoupper($routeStart['name'])." - ".strtoupper($routeEnd['name'])."</div>";
                     
                     echo "<div class='vehicle-details'><div class='s-reg'>".$vehiDetail['reg_num']."</div><div class='s-air'>";
@@ -94,8 +145,29 @@
                     else echo "(non-AC)</div>";
                     echo "<div class='s-contact'><a href='tel:".$vehiDetail['contact']."'><input type='button' class='butt-add' value='Contact'></a></div></div></div><div class='s-route'>";
 
-                    $tS = mysqli_query($connection,"SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=".$turn['t_id']." ORDER BY time_table.tim ASC;");
-                    $tE = mysqli_query($connection,"SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=".$turn['t_id']." ORDER BY time_table.tim DESC;");
+
+                    $query6 = "SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=? ORDER BY time_table.tim ASC;";
+                    $stmt6 = mysqli_stmt_init($connection);
+                    if(!mysqli_stmt_prepare($stmt6,$query6)){
+                        header('Location:index.php');
+                        exit();
+                    }
+                    mysqli_stmt_bind_param($stmt6,"s",$turn['t_id']);
+                    mysqli_stmt_execute($stmt6);
+                    $tS = mysqli_stmt_get_result($stmt6);
+                    mysqli_stmt_close($stmt6);
+
+                    $query7 = "SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=? ORDER BY time_table.tim DESC;";
+                    $stmt7 = mysqli_stmt_init($connection);
+                    if(!mysqli_stmt_prepare($stmt7,$query7)){
+                        header('Location:index.php');
+                        exit();
+                    }
+                    mysqli_stmt_bind_param($stmt7,"s",$turn['t_id']);
+                    mysqli_stmt_execute($stmt7);
+                    $tE = mysqli_stmt_get_result($stmt7);
+                    mysqli_stmt_close($stmt7);
+                    
                     $turnStart = mysqli_fetch_assoc($tS);
                     $turnEnd = mysqli_fetch_assoc($tE);
                     if($turnStart['name']==strtolower($_GET['start'])){

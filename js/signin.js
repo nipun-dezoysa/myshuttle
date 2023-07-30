@@ -49,7 +49,7 @@
                 else if(res.statusCode==202){
                     $("#er-pass").show();
                     document.getElementById("er-pass").innerHTML = "password is incorrect.";
-                    document.getElementById("e-box").className="textin-error";
+                    document.getElementById("p-box").className="textin-error";
                 }
             }
             });
