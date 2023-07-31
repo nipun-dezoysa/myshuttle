@@ -9,10 +9,7 @@
     $data = array();
     foreach($result as $row)
     {
-        $data[] = array(
-            'label'     =>  $row["name"],
-            'value'     =>  $row["name"]
-        );
+        $data[] = $row['name'];
     }
 ?>
 
@@ -22,16 +19,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Route Plan</title>
-    <link rel="stylesheet" href="../css/routeplan.css" type="text/css">
+    
     <script src="https://kit.fontawesome.com/296e3cb483.js" crossorigin="anonymous"></script>
 
     <link href="library/bootstrap-5/bootstrap.min.css" rel="stylesheet" />
     <script src="library/bootstrap-5/bootstrap.bundle.min.js"></script>
-    <script src="library/autocomplete.js"></script>
 
     <link rel="stylesheet" href="../styles/login.css" />
     <link rel="stylesheet" href="../styles/footer.css" />
     <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../css/autocomplete.css" />
+    <link rel="stylesheet" href="../css/routeplan.css" type="text/css">
 
     <link rel="stylesheet" href="../css/dashboard.css" type="text/css">
 
@@ -52,7 +50,7 @@
                     </div>
                     <div class="places" id="places"></div>
                     <div class="plan-dml">
-                        <input type="text" autocomplete="off" id="loc" placeholder="type next stop">
+                        <div class="autocomplete"><input type="text" autocomplete="off" id="loc" placeholder="type next stop"></div>
                         <input type="button" class="butt-add" id="add" value="Add">
                         <input type="button" class="butt-delete" id="delete" value="Delete">
                     </div>
@@ -68,14 +66,10 @@
 
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="../js/routeplan.js"></script>
-
+    <script src="../js/autocomplete.js"></script>
     <script>
-    var auto_complete = new Autocomplete(document.getElementById('loc'), {
-        data:<?php echo json_encode($data); ?>,
-        maximumItems:10,
-        highlightTyped:true,
-        highlightClass : 'fw-bold text-primary'
-    });     
+      var countries = <?php echo json_encode($data); ?>;
+      autocomplete(document.getElementById("loc"), countries);
     </script>
 
     <?php include_once('../footer.php');

@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="./styles/index.css" />
     <link rel="stylesheet" href="./css/resultbox.css" />
     <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/autocomplete.css" />
     
     <?php include_once("header.php")?>
 
