@@ -60,9 +60,8 @@
             $turnsRes = mysqli_stmt_get_result($stmt1);
             mysqli_stmt_close($stmt1);
 
-            if(mysqli_num_rows($turnsRes)<1){
-                echo "<div class='not-found'><h1>not found any route</h1><p>check destination names or order</p></div>";
-            }
+            $countRoute =0;
+            
             foreach($turnsRes as $turn){
 
                 if($turn["count"]!=2){
@@ -106,6 +105,7 @@
                 mysqli_stmt_close($stmt3);
                 // $turn['name']==$_GET['start']
                 if(($midStart['tim']<$midEnd['tim'])&&($vehicleCount>0) && $routeTypeValid){
+                    $countRoute++;
                     echo "<div class='result'><div class='s-type ";
 
                     if($turn['types']==1)echo "shuttle'>Shuttle";
@@ -193,6 +193,9 @@
                     }
                     echo "</div><div class='full-route'><a href='routeview.php?id=".$turn['r_id']."'>View Full Route</a></div></div>";
                 }
+            }
+            if($countRoute==0){
+                echo "<div class='not-found'><h1>not found any route</h1><p>check destination names or order</p></div>";
             }
 
         ?>        
