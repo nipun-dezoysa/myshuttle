@@ -1,19 +1,6 @@
 <?php 
-    session_start();
-    // if(!isset($_SESSION["id"])){
-    //     header('Location:signin.php');
-    //     exit();
-    // }
+  session_start();
 	require_once("inc/connection.php");
-    $result=mysqli_query($connection,"SELECT * FROM city ORDER BY name ASC");
-    $data = array();
-    foreach($result as $row)
-    {
-        $data[] = array(
-            'label'     =>  $row["name"],
-            'value'     =>  $row["name"]
-        );
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -154,9 +141,18 @@
         </div>
       </div>  
 
+      <div class="subscribe container">
+        <h1>Subscribe For Updates & Insights.</h1>
+        <div class="subscribe-input">
+          <input type="email" id="subemail" placeholder="Your email.">
+          <input class="button-64" type="button" id="subs" onclick="addsub()" value="Subscribe">
+        </div>
+      </div>  
+
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="js/index.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>

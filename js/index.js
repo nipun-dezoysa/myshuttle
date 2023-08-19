@@ -51,5 +51,40 @@ const observer = new IntersectionObserver((entries)=>{
 const hidden = document.querySelectorAll('.summary');
 hidden.forEach((el)=>observer.observe(el));
 
+function addsub(){
+  $( "#subs" ).prop( "disabled", true );
+  var emails = $("#subemail").val();
+  var valid = true;
+  const pattem = /^[a-z.0-9]+.@.[a-z]+.[.].[a-z.]+$/g;
+
+  if(emails==""){
+      valid=false;
+  }else if(!pattem.test(emails)){
+      valid=false;
+  }
+  
+  if(valid){
+      
+    $.ajax({
+    url:'inc/addsubs_inc.php',
+    type: 'POST',
+    data: {
+        emd: emails	
+    },
+    success:function(respon){
+        var ff =JSON.parse(respon);
+        
+        if(ff.statusCode==200){
+          document.getElementById("subs").value = "Subscribed";
+        }
+    }
+    });
+  }
+  
+  $( "#subs" ).prop( "disabled", false );
+
+  }
+  
+
 
 
