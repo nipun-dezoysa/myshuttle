@@ -7,10 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./styles/footer.css" />
-    <link rel="icon" type="image/x-icon" href="https://myshuttle.000webhostapp.com/Images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="http://localhost/myphp/myshuttle/Images/favicon.ico">
 
   </head>
-  <body>
+  <body onkeydown="myKey(event)">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark nav-color fixed-top">
       <div class="container">

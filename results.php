@@ -88,7 +88,7 @@
                     $routeTypeValid=false;
                 }
 
-                $query3 = "SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=? AND city.name=?;";
+                $query3 = "SELECT time_table.tim, city.name,time_table.h_id FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=? AND city.name=?;";
                 $stmt3 = mysqli_stmt_init($connection);
                 if(!mysqli_stmt_prepare($stmt3,$query3)){
                     header('Location:index.php');
@@ -105,7 +105,7 @@
                 $midEnd = mysqli_fetch_assoc($mee);
                 mysqli_stmt_close($stmt3);
                 // $turn['name']==$_GET['start']
-                if(($midStart['tim']<$midEnd['tim'])&&($vehicleCount>0) && $routeTypeValid){
+                if(($midStart['h_id']<$midEnd['h_id'])&&($vehicleCount>0) && $routeTypeValid){
                     $countRoute++;
                     echo "<div class='result'><div class='s-type ";
 
@@ -147,7 +147,7 @@
                     echo "<div class='s-contact'><a href='tel:".$vehiDetail['contact']."'><input type='button' class='butt-add' value='Contact'></a></div></div></div><div class='s-route'>";
 
 
-                    $query6 = "SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=? ORDER BY time_table.tim ASC;";
+                    $query6 = "SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=? ORDER BY time_table.h_id ASC;";
                     $stmt6 = mysqli_stmt_init($connection);
                     if(!mysqli_stmt_prepare($stmt6,$query6)){
                         header('Location:index.php');
@@ -158,7 +158,7 @@
                     $tS = mysqli_stmt_get_result($stmt6);
                     mysqli_stmt_close($stmt6);
 
-                    $query7 = "SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=? ORDER BY time_table.tim DESC;";
+                    $query7 = "SELECT time_table.tim, city.name FROM time_table INNER JOIN stops ON time_table.s_id=stops.s_id INNER JOIN city ON city.c_id=stops.c_id WHERE time_table.t_id=? ORDER BY time_table.h_id DESC;";
                     $stmt7 = mysqli_stmt_init($connection);
                     if(!mysqli_stmt_prepare($stmt7,$query7)){
                         header('Location:index.php');
@@ -171,26 +171,26 @@
                     
                     $turnStart = mysqli_fetch_assoc($tS);
                     $turnEnd = mysqli_fetch_assoc($tE);
-                    if($turnStart['name']==strtolower($_GET['start'])){
-                        echo "<div class='s-stop'><div class='s-stop-name'><b>".$turnStart['name']."</b></div><div class='s-stop-time'><b>".setTime($turnStart['tim'])."</b></div></div>";
+                    if(strtolower($turnStart['name'])==strtolower($_GET['start'])){
+                        echo "<div class='s-stop'><div class='s-stop-name'><b>".ucfirst($turnStart['name'])."</b></div><div class='s-stop-time'><b>".setTime($turnStart['tim'])."</b></div></div>";
                         echo "<i class='fa-solid fa-arrow-right'></i>";
                     }
                     else{
                         
-                        echo "<div class='s-stop'><div class='s-stop-name'>".$turnStart['name']."</div><div class='s-stop-time'>".setTime($turnStart['tim'])."</div></div>";
+                        echo "<div class='s-stop'><div class='s-stop-name'>".ucfirst($turnStart['name'])."</div><div class='s-stop-time'>".setTime($turnStart['tim'])."</div></div>";
                         echo "<i class='fa-solid fa-arrow-right'></i>";
-                        echo "<div class='s-stop'><div class='s-stop-name'><b>".$midStart['name']."</b></div><div class='s-stop-time'><b>".setTime($midStart['tim'])."</b></div></div>";
+                        echo "<div class='s-stop'><div class='s-stop-name'><b>".ucfirst($midStart['name'])."</b></div><div class='s-stop-time'><b>".setTime($midStart['tim'])."</b></div></div>";
                         echo "<i class='fa-solid fa-arrow-right'></i>";
                     }
 
-                    if($turnEnd['name']==strtolower($_GET['end'])){
-                        echo "<div class='s-stop'><div class='s-stop-name'><b>".$turnEnd['name']."</b></div><div class='s-stop-time'><b>".setTime($turnEnd['tim'])."</b></div></div>";
+                    if(strtolower($turnEnd['name'])==strtolower($_GET['end'])){
+                        echo "<div class='s-stop'><div class='s-stop-name'><b>".ucfirst($midEnd['name'])."</b></div><div class='s-stop-time'><b>".setTime($turnEnd['tim'])."</b></div></div>";
                     }
                     else{
                         
-                        echo "<div class='s-stop'><div class='s-stop-name'><b>".$midEnd['name']."</b></div><div class='s-stop-time'><b>".setTime($midEnd['tim'])."</b></div></div>";
+                        echo "<div class='s-stop'><div class='s-stop-name'><b>".ucfirst($midEnd['name'])."</b></div><div class='s-stop-time'><b>".setTime($midEnd['tim'])."</b></div></div>";
                         echo "<i class='fa-solid fa-arrow-right'></i>";
-                        echo "<div class='s-stop'><div class='s-stop-name'>".$turnEnd['name']."</div><div class='s-stop-time'>".setTime($turnEnd['tim'])."</div></div>";
+                        echo "<div class='s-stop'><div class='s-stop-name'>".ucfirst($turnEnd['name'])."</div><div class='s-stop-time'>".setTime($turnEnd['tim'])."</div></div>";
                     }
                     echo "</div><div class='full-route'><a href='routeview.php?id=".$turn['r_id']."'>View Full Route</a></div></div>";
                 }

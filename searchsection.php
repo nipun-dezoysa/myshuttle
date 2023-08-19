@@ -8,7 +8,7 @@ foreach($resultss as $row)
  ?>
 <div class="searchs bg-primary">
       <div class="container box">
-         <center><h1 class="display-4">Find Your Destination</h1></center>
+         <center><h1 class="display-4">Find Your Destination<i class="fa-solid fa-rocket"></i></h1></center>
          <form action="results.php">
           <div class="search-box">
             <div class="autocomplete"><input type="text" id="ori" name="start" autocomplete="off" placeholder="Enter Origin" <?php if(isset($_GET['start']))echo "value='".$_GET['start']."'" ?>></div>

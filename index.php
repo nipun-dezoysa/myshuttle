@@ -36,6 +36,32 @@
     <!-- Header Section -->
     <?php include_once("searchsection.php");?>
 
+    <div class="container">Recent added routes,</div>
+    <div class="recent-routes container">
+      <?php
+      $recents = mysqli_query($connection,"SELECT route.r_id, vehicle.reg_num, vehicle.air FROM route INNER JOIN vassign ON route.r_id = vassign.r_id INNER JOIN vehicle ON vassign.v_id=vehicle.v_id ORDER BY route.r_id DESC LIMIT 4;");
+      foreach($recents as $reroute){
+        $rstart = mysqli_query($connection,"SELECT city.name FROM stops INNER JOIN city On stops.c_id=city.c_id WHERE stops.r_id=".$reroute['r_id']." ORDER BY stops.s_id ASC;");
+        $rend = mysqli_query($connection,"SELECT city.name FROM stops INNER JOIN city On stops.c_id=city.c_id WHERE stops.r_id=".$reroute['r_id']." ORDER BY stops.s_id DESC;");
+        $startcity = mysqli_fetch_assoc($rstart);
+        $endcity = mysqli_fetch_assoc($rend);
+      
+      ?>
+      <a <?php echo "href='routeview.php?id=".$reroute['r_id']."'"; ?> class="recents">
+        <div><?php echo ucfirst($startcity['name'])." - ".ucfirst($endcity['name']);?></div>
+        <div>
+          <div>
+            <?php 
+              echo $reroute['reg_num']." (";
+              if($reroute['air']==0) echo "non-Ac)";
+              else echo "Ac)";
+            ?>
+          </div>
+        </div>
+      </a>
+      <?php } ?>
+    </div>
+
     <div class="welcome-mid container">
       <div class="welcome-mid-img">
       <img src="images/indexsloganpass.png" alt="bus washing">
@@ -49,7 +75,7 @@
     <div class="container summary">
       <div class="sum-box">
         <div><i class="fa-solid fa-route fa-xl"></i></div>
-        <div class="sum-count"><span>
+        <div class="sum-count"><span id="count1">
           <?php
           $turnsc = mysqli_query($connection,"select t_id from turn;");
           echo mysqli_num_rows($turnsc);
@@ -59,7 +85,7 @@
       <div class="sum-box">
         <div><i class="fa-solid fa-bus fa-xl"></i></div>
         
-        <div class="sum-count"><span>
+        <div class="sum-count"><span id="count2">
           <?php
           $turnsc = mysqli_query($connection,"select v_id from vehicle;");
           echo mysqli_num_rows($turnsc);
@@ -68,7 +94,7 @@
       </div>
       <div class="sum-box">
         <div><i class="fa-solid fa-mountain-city fa-xl"></i></div>
-        <div class="sum-count"><span>
+        <div class="sum-count"><span id="count3">
           <?php
           $turnsc = mysqli_query($connection,"select c_id from city;");
           echo mysqli_num_rows($turnsc);
@@ -99,7 +125,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-4 col-auto mx-auto"> <a class="btn btn-block btn-lg btn-success" href="signup,php" title="">Sign up now!</a> </div>
+            <div class="col-sm-4 col-auto mx-auto"> <a class="btn btn-block btn-lg btn-success" href="signup.php" title="">Sign up now!</a> </div>
           </div>
         </div>
       </div>
@@ -128,24 +154,7 @@
         </div>
       </div>  
 
-    <script src="dashboard/library/autocomplete.js"></script>
-    <script>
-    new Autocomplete(document.getElementById('ori'), {
-        data:<?php echo json_encode($data); ?>,
-        maximumItems:10,
-        highlightTyped:true,
-        highlightClass : 'fw-bold text-primary'
-    });
-    new Autocomplete(document.getElementById('des'), {
-        data:<?php echo json_encode($data); ?>,
-        maximumItems:10,
-        highlightTyped:true,
-        highlightClass : 'fw-bold text-primary'
-    });     
-    </script>
-
     <script src="js/index.js"></script>
-    
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
