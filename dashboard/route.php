@@ -7,7 +7,29 @@
         header('Location:../dashboard.php');
         exit();
     }
+
     require_once("../inc/connection.php");
+
+    $query2 = "SELECT * FROM route WHERE r_id=?";
+        $stmt2 = mysqli_stmt_init($connection);
+        if(!mysqli_stmt_prepare($stmt2,$query2)){
+            header('Location:../signup.php');
+            exit();
+        }
+        mysqli_stmt_bind_param($stmt2,"s",$_GET["id"]);
+        mysqli_stmt_execute($stmt2);
+        $userc = mysqli_stmt_get_result($stmt2);
+        mysqli_stmt_close($stmt2);
+        if(mysqli_num_rows($userc)<1){
+            header('Location:../dashboard.php');
+            exit();
+        }
+        $userconfirm = mysqli_fetch_assoc($userc);
+        if($_SESSION["id"]!=$userconfirm["u_id"]){
+            header('Location:../dashboard.php');
+            exit();
+        } 
+
     require_once("../inc/calculations_inc.php");
 ?>
 <!DOCTYPE html>

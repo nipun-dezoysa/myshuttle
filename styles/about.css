@@ -1,3 +1,6 @@
+html{
+  scroll-behavior: smooth;
+}
 .about-header {
   padding-top: 50px;
 }

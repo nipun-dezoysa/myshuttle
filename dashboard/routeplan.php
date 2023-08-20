@@ -4,7 +4,7 @@
         header('Location:../signin.php');
         exit();
     }
-	require_once("../inc/connection.php");
+	require_once("../inc/connection.php");   
     $result=mysqli_query($connection,"SELECT * FROM city ORDER BY name ASC");
     $data = array();
     foreach($result as $row)

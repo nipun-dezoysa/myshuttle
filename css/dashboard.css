@@ -1,6 +1,8 @@
 .dash-main{
     margin-top: 100px;
     display: flex;
+    min-height: 400px;
+    align-items: flex-start;
 }
 .dash-side{
     width: 20%;

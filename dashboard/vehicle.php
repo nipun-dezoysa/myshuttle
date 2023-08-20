@@ -4,6 +4,27 @@
         exit();
     }
     require_once("../inc/connection.php");
+    if(isset($_GET['vid'])){
+        $query22 = "SELECT * FROM vehicle WHERE v_id=?";
+        $stmt22 = mysqli_stmt_init($connection);
+        if(!mysqli_stmt_prepare($stmt22,$query22)){
+            header('Location:../signup.php');
+            exit();
+        }
+        mysqli_stmt_bind_param($stmt22,"s",$_GET["vid"]);
+        mysqli_stmt_execute($stmt22);
+        $userc = mysqli_stmt_get_result($stmt22);
+        mysqli_stmt_close($stmt22);
+        if(mysqli_num_rows($userc)<1){
+            header('Location:../dashboard.php');
+            exit();
+        }
+        $userconfirm = mysqli_fetch_assoc($userc);
+        if($_SESSION["id"]!=$userconfirm["u_id"]){
+            header('Location:../dashboard.php');
+            exit();
+        } 
+    }
 ?>
 
 <!DOCTYPE html>
