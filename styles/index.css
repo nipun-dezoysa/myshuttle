@@ -8,11 +8,16 @@ body{
 
 padding-bottom: 20px;
 }
+.mybody{
+  background-color: white;
+}
 
 .searchs{
 height: 400px;
+overflow: hidden;
 
 }
+
 .nav-color{
   background-color: #001A39;
 }
@@ -87,8 +92,14 @@ outline: none;
   width: 100%;
   justify-content: space-around;
 }
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap');
+.welcome-mid-des{
+  font-family: 'Mulish', sans-serif;
+}
 .welcome-mid-des span{
   font-size: 30px;
+  color: #0d6efd;
+  font-weight: 500;
   
 }
 
@@ -96,6 +107,7 @@ outline: none;
   font-size: 40px;
 }
 .feature{
+  font-family: 'Mulish', sans-serif;
   padding-top: 0;
   padding-bottom: 10px;
   border-radius: 15px;
@@ -143,6 +155,7 @@ outline: none;
   flex-wrap: wrap;
 }
 .recents{
+  overflow: hidden;
   text-decoration: none;
   color: #001A39;
   font-weight: 600;
@@ -158,6 +171,19 @@ outline: none;
   color: white;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
+.recent-img{
+  width: 100%;
+  overflow: hidden;
+}
+.recents img{
+  width: 100%;
+  object-fit: cover;
+  position: relative;
+  transition: all linear 0.3s;
+}
+.recents img:hover{
+  scale: 1.1;
+}
 .subscribe{
   color: white;
   margin-top: 5px;
@@ -166,6 +192,9 @@ outline: none;
   background-color: #0F3460;
   text-align: center;
   border-radius: 10px;
+}
+.subscribe h1{
+  font-size: 25px;
 }
 .subscribe input[type="email"]{
   width: 500px;
@@ -215,6 +244,9 @@ outline: none;
     font-size: 15px;
     text-align: center;
   }
+  .welcome-mid-des span{
+    font-size: 20px;
+  }
   .search-box{
     font-size: 12px;
   }
@@ -243,7 +275,7 @@ outline: none;
     width: 100%;
   }
   .subscribe h1{
-    font-size: 25px;
+    font-size: 20px;
   }
   .button-64 {
     margin-left: 0;

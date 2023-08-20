@@ -52,21 +52,13 @@
     </header>
     <section class="about-us" >
       <div class="container-md">
-        
-        
-            
-            <p class="text-center"><span 
-              style="font-size: 26px;
-              font-weight: 700;
-              ">MyShuttle</span> service for all types of travel
+        <p class="text-center"><span style="font-size: 26px; font-weight: 700;">MyShuttle</span> service for all types of travel
                needs.Which Is A Product Of A Group Of Undergraduate Students In NSBM Green
                 University Under The Web Application Development Module.Our platform is 
                 your gateway to convenient and efficient transportation solutions.visit 
                 our website and explore the range of convenient transportation solutions 
-                we offer.We are excited to serve you and provide a seamless and comfortable transportation experience for all your travel needs. Let's get you moving!</p>
-           
-          
-        
+                we offer.We are excited to serve you and provide a seamless and comfortable transportation experience for all your travel needs. Let's get you moving!
+        </p>
       </div>
     </section>
 
@@ -194,7 +186,7 @@
             <div class="image-container">
               <img src="./images/hiruni.jpeg" class="img-fluid rounded-circle" alt="Team Member">
             </div>
-            <h4>Hiruni Hansamali</h4>
+            <h4>Hiruni Divyanjalee</h4>
             <p>Researcher</p>
             
             <ul class="list-inline">

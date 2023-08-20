@@ -35,15 +35,18 @@
       
       ?>
       <a <?php echo "href='routeview.php?id=".$reroute['r_id']."'"; ?> class="recents">
-        <div><?php echo ucfirst($startcity['name'])." - ".ucfirst($endcity['name']);?></div>
-        <div>
-          <div>
-            <?php 
-              echo $reroute['reg_num']." (";
-              if($reroute['air']==0) echo "non-Ac)";
-              else echo "Ac)";
-            ?>
-          </div>
+        <div class="recent-img">
+          <img src="img/bus.jpg" alt="route bus pic">
+        </div>  
+        <div class="recent-details">
+            <div><?php echo ucfirst($startcity['name'])." - ".ucfirst($endcity['name']);?></div>
+            <div>
+                <?php 
+                  echo $reroute['reg_num']." (";
+                  if($reroute['air']==0) echo "non-Ac)";
+                  else echo "Ac)";
+                ?>
+            </div>
         </div>
       </a>
       <?php } ?>
@@ -54,7 +57,7 @@
       <img src="images/indexsloganpass.png" alt="bus washing">
       </div>
       <div class="welcome-mid-des">
-      <div class="welcome-note"><span>Welcome </span>to our innovative shuttle service platform! With our user-friendly interface, travelers can effortlessly search for shuttle options between their desired destinations. Whether you're planning a quick city-to-city trip or a scenic countryside journey, our platform provides comprehensive and real-time shuttle results to cater to your needs.
+      <div class="welcome-note"><span>Welcome </span>to our innovative shuttle service platform! With our user-friendly interface, travelers can effortlessly search for shuttle options between their <span>desired destinations.</span> Whether you're planning a quick city-to-city trip or a scenic countryside journey, our platform provides comprehensive and real-time <span>shuttle results</span> to cater to your needs.
       </div>
       </div>
     </div>
@@ -93,7 +96,7 @@
     
     <div class="welcome-mid container">
       <div class="welcome-mid-des">
-        <p>What sets us apart is our inclusive approach, allowing shuttle drivers to actively participate by adding their route details to the platform. This not only benefits travelers with a diverse range of choices but also empowers drivers to expand their reach and grow their businesses.</p>
+        <p>What sets us apart is our inclusive approach, allowing shuttle drivers to <span>actively participate</span> by adding their route details to the platform. This not only benefits travelers with a diverse range of choices but also empowers drivers to <span>expand</span> their reach and grow their businesses.</p>
       </div>
       <div class="welcome-mid-img">
       <img src="images/indexslogan.png" alt="bus washing">
