@@ -43,6 +43,14 @@ body{
 .vehicle-details{
     display: flex;
 }
+.s-stop{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.s-stop-time{
+    font-size: 12px;
+}
 @media (max-width:900px) {
     .result{
         padding-left: 10px;
