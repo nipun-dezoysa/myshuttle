@@ -2,6 +2,7 @@
   session_start();
 	require_once("inc/connection.php");
 ?>
+<!-- first year project -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
